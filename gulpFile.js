@@ -79,19 +79,15 @@ gulp.task('html-parser', function () {
     var cssFilter = filter('**/*.css');
 
     return gulp.src([config.dev+'/**/*.html','!'+config.dev+'/assets/lib/**','!'+config.dev+'/templates/**' ])
-        /*
         .pipe(useref.assets())
-        */
         .pipe(jsFilter)
         .pipe(uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
         .pipe(minifyCss())
         .pipe(cssFilter.restore())
-        /*
         .pipe(useref.restore())
         .pipe(useref())
-        */
         .pipe(gulp.dest(config.build))
         .on('error', function(level, error) {
             gutil.log(error.message);
