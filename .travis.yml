@@ -1,7 +1,8 @@
 before_script:
   - npm install -g bower gulp
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "StrictHostKeyChecking no\n" >> ~/.ssh/config
   - bower install -f
+  - gulp build
 
 language: node_js
 
