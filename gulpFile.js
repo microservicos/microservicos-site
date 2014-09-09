@@ -90,8 +90,8 @@ gulp.task('html-parser', function () {
         .pipe(useref.restore())
         .pipe(useref())
         .pipe(gulp.dest(config.build))
-        .on('error', function(level, error) {
-            gutil.log(error.message);
+        .on('error', function() {
+            gutil.log(arguments);
         }
     )
 });
@@ -120,7 +120,7 @@ gulp.task('template-parser', function () {
 });
 
 gulp.task('imagemin', function () {
-    return gulp.src(config.dev+'/assets/images/**')
+    return gulp.src(config.dev+'/images/**')
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
