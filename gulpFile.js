@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var clean = require('gulp-clean');
 var gutil = require('gulp-util');
 var csslint = require('gulp-csslint');
 var jshint = require('gulp-jshint');
@@ -95,6 +96,11 @@ gulp.task('html-parser', function () {
     )
 });
 
+// Clean
+gulp.task('clean', function () {
+    return gulp.src( ['build/'], { read: false }).pipe(clean());
+});
+
 gulp.task('template-parser', function () {
     console.log('Building template files.. This might take a few minutes..');
     var jsFilter = filter('**/*.js');
@@ -124,7 +130,7 @@ gulp.task('imagemin', function () {
 });
 
 gulp.task('fonts', function () {
-    return gulp.src(config.dev+'/assets/fonts/**')
+    return gulp.src([ config.dev+'/assets/fonts/**', config.dev + '/assets/lib/font-awesome-stylus/fonts/**'])
                 .pipe(gulp.dest(config.build+'/fonts'));
 });
 
@@ -144,5 +150,5 @@ gulp.task('stylus', function () {
 
 gulp.task('default', ['stylus', 'connect-dev', 'watch']);
 gulp.task('build-templates', ['imagemin','fonts','template-parser']);
-gulp.task('build', ['imagemin','fonts','html-parser']);
+gulp.task('build', ['imagemin','fonts','stylus', 'html-parser']);
 gulp.task('prod', ['connect-prod']);
