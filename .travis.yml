@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - "0.10"
+
+deploy:
+  provider: divshot
+  api_key:
+    secure: sTgPKODvQr4M/CVTw/lEQf4N9WDfmqsQGG88hya3JF/dOemaF1JUpzvCHP1knsmWVtwV2g1fJWaCDlXtukEqNyazuTJnDB/pH1ASKXufAvv0CAqKH/6v+wYUSYlAWSMitVSlh+6LIPRrxApfb9IkiMafkiig1BhHEzvxnEkrdGg=
+  skip_cleanup: true
+  environment: production
+  on:
+    repo: microservicos/microservicos-site
