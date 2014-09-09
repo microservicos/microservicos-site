@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var csslint = require('gulp-csslint');
 var jshint = require('gulp-jshint');
 var livereload = require('gulp-livereload');
@@ -58,7 +59,7 @@ gulp.task('reload', function () {
 
 gulp.task('watch', function () {
     gulp.watch([
-        config.dev+'/assets/styles/*.styl',
+        config.dev+'/assets/styles/*.styl'
        ], ['stylus', 'csslint', 'reload']);
     
     gulp.watch([
@@ -78,16 +79,24 @@ gulp.task('html-parser', function () {
     var cssFilter = filter('**/*.css');
 
     return gulp.src([config.dev+'/**/*.html','!'+config.dev+'/assets/lib/**','!'+config.dev+'/templates/**' ])
+        /*
         .pipe(useref.assets())
+        */
         .pipe(jsFilter)
         .pipe(uglify())
         .pipe(jsFilter.restore())
         .pipe(cssFilter)
         .pipe(minifyCss())
         .pipe(cssFilter.restore())
+        /*
         .pipe(useref.restore())
         .pipe(useref())
-        .pipe(gulp.dest(config.build));
+        */
+        .pipe(gulp.dest(config.build))
+        .on('error', function(level, error) {
+            gutil.log(error.message);
+        }
+    )
 });
 
 gulp.task('template-parser', function () {

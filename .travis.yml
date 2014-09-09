@@ -2,7 +2,7 @@ before_script:
 - npm install -g bower gulp
 - echo -e "StrictHostKeyChecking no\n" >> ~/.ssh/config
 - bower install -f
-- gulp build
+- gulp stylus build
 language: node_js
 node_js:
 - '0.10'
