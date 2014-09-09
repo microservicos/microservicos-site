@@ -1,18 +1,15 @@
 before_script:
-  - npm install -g bower gulp
-  - echo -e "StrictHostKeyChecking no\n" >> ~/.ssh/config
-  - bower install -f
-  - gulp build
-
+- npm install -g bower gulp
+- echo -e "StrictHostKeyChecking no\n" >> ~/.ssh/config
+- bower install -f
+- gulp build
 language: node_js
-
 node_js:
-  - "0.10"
-
+- '0.10'
 deploy:
   provider: divshot
   api_key:
-    secure: sTgPKODvQr4M/CVTw/lEQf4N9WDfmqsQGG88hya3JF/dOemaF1JUpzvCHP1knsmWVtwV2g1fJWaCDlXtukEqNyazuTJnDB/pH1ASKXufAvv0CAqKH/6v+wYUSYlAWSMitVSlh+6LIPRrxApfb9IkiMafkiig1BhHEzvxnEkrdGg=
+    secure: lJGC3XoxvkPotmkkMQ2TQ8aR3DAMBbaxg3XtneLzegTox/bqVZzu/inIvee98vvi4nRy1N7qmD2DC9BGhEtCkPB/xYRhCcH8FlkByyO65FeGhH6rviLbpzhtACBr4n8y++TG7eEziojIi49jdPX/Z/uOpqL0zMsjSOKXJw8j3pE=
   skip_cleanup: true
   environment: production
   on:
